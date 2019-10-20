@@ -1,5 +1,5 @@
 from tkinter import *
-from tkinter import filedialog
+from tkinter import filedialog,colorchooser
 def msg():
     s=text1.get(1.0,END)
     print(s)
@@ -27,6 +27,11 @@ def save_file():
         return
     f.write("hello how r u")
     f.close()
+def fore_color():
+    c=colorchooser.askcolor()
+    #text1.configure(foreground=c[1])
+    text1.configure(background=c[1])
+    print(c)
 
 root=Tk()
 root.title("My Notepad")                                        #title name
@@ -53,5 +58,9 @@ btn4.pack()
 
 btn5=Button(root,text="Save file",command=save_file)
 btn5.pack()
+
+
+btn6=Button(root,text="Fore Ground color",command=fore_color)
+btn6.pack()
 #text1.pack(fill=BOTH, expand=1)
 mainloop()
