@@ -111,7 +111,7 @@ class Note:
         g=self.txt.get(1.0,END)
         print(g)
 
-    def cut(self,event=""):
+    ''' def cut(self,event=""):
         self.u="cut"
         self.w=self.txt.selection_get()
         i=self.txt.search(self.w,1.0,END)
@@ -123,7 +123,7 @@ class Note:
     def copy(self,event=""):
         self.u = "copy"
         self.w=self.txt.selection_get()
-
+    '''
     def delete(self,event=""):
         self.u = "delete"
         self.w2=self.txt.selection_get()
@@ -133,14 +133,26 @@ class Note:
         self.j=i
         self.txt.delete(i,e)
 
-    def paste(self,event=""):
+    '''def paste(self,event=""):
         self.u = "paste"
         self.w2=self.txt.selection_get()
         i=self.txt.search(self.w2,1.0,END)
         l=int(i.split('.')[1])+len(self.w2)
         e=i.split('.')[0]+"."+str(l)
         self.txt.delete(i,e)
-        self.txt.insert(INSERT,self.w,i)
+        self.txt.insert(INSERT,self.w,i)'''
+
+    def cut(self):
+        self.copy()
+        self.txt.delete('sel.first', 'sel.last')
+    def copy(self):
+        self.txt.clipboard_clear()
+        self.txt.clipboard_append(self.txt.selection_get())
+    def paste(self):
+        self.txt.insert(INSERT, self.txt.clipboard_get())
+
+
+
 
     def sa(self,event=""):
         self.u = "sa"
