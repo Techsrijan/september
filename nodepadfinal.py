@@ -20,7 +20,7 @@ class Note:
         master.bind("<Alt-a>", self.sa)
         self.outermenu=Menu(master)
         master.config(menu=self.outermenu)
-        self.txt = Text(master,width=20,height=3,wrap=WORD,padx=10,pady=10,bd=5,selectbackground="red")
+        self.txt = Text(master,width=20,height=3,wrap=WORD,padx=10,pady=10,bd=5,selectbackground="red",undo=True)
         self.txt.pack(fill=BOTH, expand=1)
 
         self.filem=Menu(self.outermenu,tearoff=0)
